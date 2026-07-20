@@ -1,0 +1,208 @@
+/* Header */
+.about-header {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(124, 58, 237, 0.2) 0%, transparent 70%),
+    linear-gradient(135deg, #0a0612, #120a1e);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.about-tagline {
+  color: var(--accent-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.section-sub-tag {
+  color: var(--accent-purple-light);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+}
+
+/* Story Visual */
+.story-visual {
+  position: relative;
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+}
+
+.story-card {
+  background: var(--card-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.main-story-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 160px;
+  border-color: var(--border-gold);
+  animation: float 4s ease-in-out infinite;
+}
+
+.story-emoji {
+  font-size: 3rem;
+}
+
+.float-story-1 {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  padding: 12px 16px;
+  animation: float 3s ease-in-out infinite;
+  color: var(--text-primary);
+}
+
+.float-story-2 {
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  padding: 12px 16px;
+  animation: float 3.5s ease-in-out infinite;
+  animation-delay: 1s;
+  color: var(--text-primary);
+}
+
+.story-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  height: 260px;
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
+  pointer-events: none;
+}
+
+.story-ring-2 {
+  width: 320px;
+  height: 320px;
+  border-color: rgba(124, 58, 237, 0.1);
+  animation-direction: reverse;
+}
+
+/* Stats */
+.stats-section {
+  background: linear-gradient(135deg, #0f0820, #1a1028);
+}
+
+.stat-card {
+  background: var(--card-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-4px);
+}
+
+.stat-number {
+  color: var(--accent-gold);
+  font-weight: 800;
+  font-size: 2.2rem;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Values */
+.value-card {
+  background: var(--card-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.value-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(124, 58, 237, 0.15);
+}
+
+.value-icon-wrap {
+  width: 65px;
+  height: 65px;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--accent-gold);
+}
+
+/* Team */
+.team-card {
+  background: var(--card-dark);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover {
+  border-color: var(--accent-gold);
+  transform: translateY(-5px);
+}
+
+.team-avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(201, 168, 76, 0.1));
+  border: 1px solid var(--border-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+
+/* CTA */
+.about-cta {
+  background: linear-gradient(135deg, #0f0820, #1a1028);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.main-story-card {
+  animation: floatCenter 4s ease-in-out infinite;
+}
+
+@keyframes floatCenter {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+  50% { transform: translate(-50%, -50%) translateY(-10px); }
+}

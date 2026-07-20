@@ -1,0 +1,46 @@
+<nav class="navbar-custom sticky-top">
+  <div class="container">
+    <div class="nav-inner d-flex align-items-center justify-content-between py-3">
+
+      <!-- Logo -->
+      <a routerLink="/" class="brand-logo">
+        <span class="brand-icon">✦</span>
+        <span class="brand-name">SWASTICK</span>
+        <span class="brand-sub">GARMENTS</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <ul class="nav-links d-none d-lg-flex list-unstyled mb-0 gap-4">
+        <li><a routerLink="/" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact:true}" class="nav-link-item">Home</a></li>
+        <li><a routerLink="/shop" routerLinkActive="nav-active" class="nav-link-item">Shop</a></li>
+        <li><a routerLink="/about" routerLinkActive="nav-active" class="nav-link-item">About</a></li>
+        <li><a routerLink="/contact" routerLinkActive="nav-active" class="nav-link-item">Contact</a></li>
+      </ul>
+
+      <!-- Right Icons -->
+      <div class="nav-icons d-flex align-items-center gap-3">
+        <a routerLink="/shop" class="nav-icon-btn" title="Shop">
+          <i class="bi bi-bag"></i>
+        </a>
+        <a routerLink="/contact" class="btn-gold d-none d-lg-inline-block">
+          Visit Us
+        </a>
+
+        <!-- Mobile Hamburger -->
+        <button class="hamburger d-lg-none" (click)="toggleMenu()">
+          <i class="bi" [ngClass]="isMenuOpen ? 'bi-x-lg' : 'bi-list'"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" [class.open]="isMenuOpen">
+      <ul class="list-unstyled mb-0 py-3">
+        <li><a routerLink="/" class="mobile-link" (click)="toggleMenu()">Home</a></li>
+        <li><a routerLink="/shop" class="mobile-link" (click)="toggleMenu()">Shop</a></li>
+        <li><a routerLink="/about" class="mobile-link" (click)="toggleMenu()">About</a></li>
+        <li><a routerLink="/contact" class="mobile-link" (click)="toggleMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

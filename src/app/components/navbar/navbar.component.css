@@ -1,0 +1,108 @@
+.navbar-custom {
+  background: linear-gradient(135deg, rgba(10, 6, 18, 0.98), rgba(18, 10, 30, 0.98));
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(124, 58, 237, 0.1);
+}
+
+/* Brand Logo */
+.brand-logo {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-icon {
+  color: var(--accent-gold);
+  font-size: 1.2rem;
+  filter: drop-shadow(0 0 6px rgba(201, 168, 76, 0.5));
+}
+
+.brand-name {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.brand-sub {
+  color: var(--accent-gold);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  align-self: flex-end;
+  margin-bottom: 2px;
+}
+
+/* Nav Links */
+.nav-link-item {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+}
+
+.nav-link-item:hover,
+.nav-active {
+  color: var(--accent-gold) !important;
+  border-bottom-color: var(--accent-gold);
+  text-shadow: 0 0 10px rgba(201, 168, 76, 0.3);
+}
+
+/* Icons */
+.nav-icon-btn {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-icon-btn:hover {
+  color: var(--accent-gold);
+}
+
+/* Hamburger */
+.hamburger {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  border-top: 1px solid transparent;
+}
+
+.mobile-menu.open {
+  max-height: 300px;
+  border-top-color: var(--border-color);
+}
+
+.mobile-link {
+  display: block;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 12px 0;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-bottom: 1px solid var(--border-color);
+  transition: color 0.3s ease;
+}
+
+.mobile-link:hover {
+  color: var(--accent-gold);
+}
