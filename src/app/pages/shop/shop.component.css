@@ -164,3 +164,9 @@
   font-size: 0.85rem;
   text-decoration: line-through;
 }
+
+
+.btn-added {
+  background: linear-gradient(135deg, #22c55e, #16a34a) !important;
+  color: white !important;
+}

@@ -19,9 +19,10 @@
 
       <!-- Right Icons -->
       <div class="nav-icons d-flex align-items-center gap-3">
-        <a routerLink="/shop" class="nav-icon-btn" title="Shop">
-          <i class="bi bi-bag"></i>
-        </a>
+        <a routerLink="/cart" class="nav-icon-btn cart-icon-wrap" title="Cart">
+  <i class="bi bi-bag"></i>
+  <span class="cart-count" *ngIf="cartCount > 0">{{ cartCount }}</span>
+</a>
         <a routerLink="/contact" class="btn-gold d-none d-lg-inline-block">
           Visit Us
         </a>

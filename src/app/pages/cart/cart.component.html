@@ -1,0 +1,127 @@
+<!-- Header -->
+<section class="cart-header py-5">
+  <div class="container text-center">
+    <p class="cart-tagline">✦ YOUR SELECTION ✦</p>
+    <h1 class="fw-bold mb-2">Shopping Cart</h1>
+    <p class="text-muted">{{ cartItems.length }} item(s) in your cart</p>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="container">
+
+    <!-- Empty Cart -->
+    <div *ngIf="cartItems.length === 0" class="empty-cart text-center py-5">
+      <div style="font-size: 4rem;">🛍️</div>
+      <h4 class="mt-3 fw-bold">Your cart is empty</h4>
+      <p class="text-muted mb-4">Looks like you haven't added anything yet</p>
+      <a routerLink="/shop" class="btn-gold">Start Shopping</a>
+    </div>
+
+    <!-- Cart Items -->
+    <div *ngIf="cartItems.length > 0">
+      <div class="row g-4">
+
+        <!-- Items List -->
+        <div class="col-lg-8">
+          <div class="cart-items-card p-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h5 class="fw-bold mb-0">Cart Items</h5>
+              <button class="clear-btn" (click)="clearCart()">
+                <i class="bi bi-trash me-1"></i>Clear All
+              </button>
+            </div>
+
+            <div class="cart-item" *ngFor="let item of cartItems">
+              <div class="row align-items-center g-3">
+
+                <!-- Product Visual -->
+                <div class="col-auto">
+                  <div class="cart-item-visual">
+                    <span>{{ item.product.emoji }}</span>
+                  </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="col">
+                  <p class="item-category mb-0">{{ item.product.category }}</p>
+                  <h6 class="item-name mb-1">{{ item.product.name }}</h6>
+                  <p class="item-price mb-0">₹{{ item.product.price }}</p>
+                </div>
+
+                <!-- Quantity Controls -->
+                <div class="col-auto">
+                  <div class="qty-control">
+                    <button class="qty-btn" (click)="updateQuantity(item.product.id, item.quantity - 1)">
+                      <i class="bi bi-dash"></i>
+                    </button>
+                    <span class="qty-number">{{ item.quantity }}</span>
+                    <button class="qty-btn" (click)="updateQuantity(item.product.id, item.quantity + 1)">
+                      <i class="bi bi-plus"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Item Total -->
+                <div class="col-auto text-end">
+                  <p class="item-total mb-1">₹{{ item.product.price * item.quantity }}</p>
+                  <button class="remove-btn" (click)="removeItem(item.product.id)">
+                    <i class="bi bi-x-lg"></i>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="col-lg-4">
+          <div class="summary-card p-4">
+            <h5 class="fw-bold mb-4">Order Summary</h5>
+
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">Subtotal</span>
+              <span>₹{{ getTotal() }}</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">Delivery</span>
+              <span class="text-gold" *ngIf="getTotal() >= 999">FREE</span>
+              <span *ngIf="getTotal() < 999">₹99</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+              <span class="text-muted">Discount</span>
+              <span class="text-gold">-₹0</span>
+            </div>
+
+            <hr class="gold-divider my-3">
+
+            <div class="d-flex justify-content-between mb-4">
+              <span class="fw-bold">Total</span>
+              <span class="fw-bold total-price">
+                ₹{{ getTotal() >= 999 ? getTotal() : getTotal() + 99 }}
+              </span>
+            </div>
+
+            <div *ngIf="getTotal() < 999" class="free-delivery-msg mb-3">
+              <i class="bi bi-truck me-2"></i>
+              Add ₹{{ 999 - getTotal() }} more for FREE delivery!
+            </div>
+
+            <button class="btn-gold w-100 py-3">
+              <i class="bi bi-lock-fill me-2"></i>Proceed to Checkout
+            </button>
+
+            <a routerLink="/shop" class="btn-gold-outline w-100 text-center mt-3 py-2 d-block">
+              Continue Shopping
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>

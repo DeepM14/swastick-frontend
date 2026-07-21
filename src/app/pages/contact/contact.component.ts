@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +11,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
+
+  
+  private SERVICE_ID = 'service_nsfbczg';
+  private TEMPLATE_ID = 'template_0opj23c';
+  private PUBLIC_KEY = 'EEr3FNfyA7Jao-VAI';
 
   contactData = {
     name: '',
@@ -51,12 +57,29 @@ export class ContactComponent {
     this.errorMessage = '';
     this.submitting = true;
 
-    // Simulate form submission (appuram backend connect pannalam)
-    setTimeout(() => {
-      this.successMessage = 'Thank you! Your message has been sent. We will get back to you within 24 hours.';
+    // EmailJS template parameters
+    const templateParams = {
+      from_name: this.contactData.name,
+      from_email: this.contactData.email,
+      phone: this.contactData.phone || 'Not provided',
+      subject: this.contactData.subject,
+      message: this.contactData.message
+    };
+
+    emailjs.send(
+      this.SERVICE_ID,
+      this.TEMPLATE_ID,
+      templateParams,
+      this.PUBLIC_KEY
+    ).then(() => {
+      this.successMessage = '✅ Message sent successfully! We will get back to you within 24 hours.';
       this.resetForm();
       this.submitting = false;
-    }, 1500);
+    }).catch((error) => {
+      console.error('EmailJS error:', error);
+      this.errorMessage = '❌ Failed to send message. Please try again or call us directly.';
+      this.submitting = false;
+    });
   }
 
   resetForm(): void {

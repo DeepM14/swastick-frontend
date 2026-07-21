@@ -76,7 +76,16 @@
             </div>
 
             <!-- Button -->
-            <button class="btn-gold w-100 text-center">Add to Cart</button>
+            <button class="btn-gold w-100 text-center"
+  (click)="addToCart(product)"
+  [class.btn-added]="addedProductId === product.id">
+  <span *ngIf="addedProductId !== product.id">
+    <i class="bi bi-bag-plus me-1"></i>Add to Cart
+  </span>
+  <span *ngIf="addedProductId === product.id">
+    <i class="bi bi-check-lg me-1"></i>Added!
+  </span>
+</button>
           </div>
         </div>
       </div>

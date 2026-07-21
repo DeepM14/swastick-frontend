@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 export interface Product {
   id: number;
@@ -24,6 +25,7 @@ export interface Product {
 export class ShopComponent {
 
   selectedCategory = 'All';
+  addedProductId: number | null = null;
 
   categories = ['All', "Men's Wear", "Women's Wear", "Kids Wear", "Ethnic Wear", "Casual Wear"];
 
@@ -42,15 +44,21 @@ export class ShopComponent {
     { id: 12, name: 'Pathani Suit', category: "Men's Wear", price: 1599, originalPrice: 2199, emoji: '🧣', rating: 5, reviews: 54 }
   ];
 
+  constructor(private cartService: CartService) { }
+
   get filteredProducts(): Product[] {
-    if (this.selectedCategory === 'All') {
-      return this.products;
-    }
+    if (this.selectedCategory === 'All') return this.products;
     return this.products.filter(p => p.category === this.selectedCategory);
   }
 
   selectCategory(category: string): void {
     this.selectedCategory = category;
+  }
+
+  addToCart(product: Product): void {
+    this.cartService.addToCart(product);
+    this.addedProductId = product.id;
+    setTimeout(() => this.addedProductId = null, 1500);
   }
 
   getDiscount(price: number, originalPrice: number): number {
